@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Blog.Objects;
 
-namespace Blog.Mappings
+namespace Blog.Data
 {
     public class BlogContext : DbContext
     {
