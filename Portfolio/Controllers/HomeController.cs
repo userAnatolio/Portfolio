@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Portfolio.Models;
+using Blog.Mappings;
+using Blog.Objects;
 
 namespace Portfolio.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public BlogContext blogContext = new BlogContext();
 
         public HomeController(ILogger<HomeController> logger)
         {
