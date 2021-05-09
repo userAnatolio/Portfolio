@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Blog.Mappings;
+using Blog.Data;
 using Microsoft.EntityFrameworkCore;
+using Blog;
+using Blog.Migrations;
 
 namespace Portfolio
 {
@@ -27,7 +29,7 @@ namespace Portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddTransient<IBlogRepository, BlogRepository>();
 
         }
 
