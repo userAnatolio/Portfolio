@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 using System.Text;
@@ -14,16 +15,21 @@ namespace Blog
 
         public IList<Post> Posts(int pageNo, int pageSize)
         {
-            //var obj = _blogContext.Posts.Find();
-            
-            List<Post> posts = new List<Post>();
+            var obj = _blogContext.Posts.Where(p => p.Published)
+                              .OrderByDescending(p => p.PostedOn)
+                              .Skip(pageNo * pageSize)
+                              .Take(pageSize)
+                              .ToList();
 
+            List<Post> posts = new List<Post>();
             return posts;
         }
 
         public int TotalPosts()
         {
-            return 2;
+            return _blogContext.Posts.Where(p => p.Published).Count();
         }
+
+
     }
 }
