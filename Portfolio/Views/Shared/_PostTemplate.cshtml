@@ -1,0 +1,48 @@
+﻿@model Blog.Objects.Post
+
+        <div class="row">
+
+            <div class="post-title">
+                <h2>@Model.Title</h2>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="post-category col-md-4">
+                <span>Category: </span>@Model.Category.Name 
+            </div>
+
+            <div class="post-tags col-md-4">
+                <span>Tags:</span>
+                @foreach (var elem in @Model.Tags)
+                {
+                    @elem.Name
+                }
+
+            </div>
+
+            <div class="posted-date col-md-4">
+                @Model.PostedOn
+            </div>
+
+        </div>
+
+    <!--Short Description-->
+    <div class="post-body">
+        @Model.ShortDescription
+    </div>
+
+    <div class="post-foot" style="float:right">
+        @Html.ActionLink("continue...", "post", "blog",
+            new
+            {
+                year = Model.PostedOn.Year,
+                month = Model.PostedOn.Month,
+                day = Model.PostedOn.Day,
+                title = Model.UrlSlug
+            },
+            new { title = "continue..." }
+        )
+    </div>
