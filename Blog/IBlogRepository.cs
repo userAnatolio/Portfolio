@@ -11,6 +11,6 @@ namespace Blog
         //Метод Posts используется для последних опубликованных записей
         IList<Post> Posts(int pageNo, int pageSize);
         //TotalPosts используется для возврата общего кол-ва всех опубликованных сообщений
-        int TotalPosts();
+        int TotalPosts(bool checkIsPublished = true);
     }
 }

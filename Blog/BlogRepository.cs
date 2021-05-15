@@ -15,19 +15,26 @@ namespace Blog
 
         public IList<Post> Posts(int pageNo, int pageSize)
         {
-            var obj = _blogContext.Posts.Where(p => p.Published)
-                              .OrderByDescending(p => p.PostedOn)
-                              .Skip(pageNo * pageSize)
-                              .Take(pageSize)
-                              .ToList();
+            var posts = _blogContext.Posts
+                            .Where(p => p.Published)
+                            .OrderByDescending(p => p.PostedOn)
+                            .Skip(pageNo * pageSize)
+                            .Take(pageSize)
+                            .Include(p=>p.Category)
+                            .ToList();
 
-            List<Post> posts = new List<Post>();
-            return posts;
+      var postIds = posts.Select(p => p.Id).ToList();
+
+      return _blogContext.Posts
+            .Where(p => postIds.Contains(p.Id))
+            .OrderByDescending(p => p.PostedOn)
+            .Include(p=>p.Tags)
+            .ToList();
         }
 
-        public int TotalPosts()
+        public int TotalPosts(bool checkIsPublished = true)
         {
-            return _blogContext.Posts.Where(p => p.Published).Count();
+            return _blogContext.Posts.Where(p => !checkIsPublished || p.Published == true).Count();
         }
 
 
