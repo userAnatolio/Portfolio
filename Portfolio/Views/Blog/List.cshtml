@@ -15,6 +15,7 @@
         foreach (var post in Model.Posts)
         {
             @Html.Partial("_PostTemplate", post)
+            @post.Category
         }
     }
     else
