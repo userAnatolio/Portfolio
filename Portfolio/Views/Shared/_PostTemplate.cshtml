@@ -15,15 +15,16 @@
 
             <!--Category-->
             <div class="post-category">
-                <span>Category: </span>@Model.Category
+                <span>Category: </span>@Model.Category.Name 
             </div>
 
             <!--Tags-->
             <div class="post-tags">
-                @*@foreach (var elem in @Model.Tags)
+                <span>Tags:</span>
+                @foreach (var elem in @Model.Tags)
                 {
-                    <span>Tags:</span>@elem.Name
-                }*@
+                    @elem.Name
+                }
 
             </div>
 
