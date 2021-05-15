@@ -6,7 +6,7 @@
 
             <!--Heading-->
             <div class="post-title">
-                <h2>@Model</h2>
+                <h2>@Model.Title</h2>
             </div>
 
         </div>
@@ -20,12 +20,16 @@
 
             <!--Tags-->
             <div class="post-tags">
-                <span>Tags:</span>@Model.Tags
+                @*@foreach (var elem in @Model.Tags)
+                {
+                    <span>Tags:</span>@elem.Name
+                }*@
+
             </div>
 
             <!--Posted date-->
             <div class="posted-date">
-                @Model.PostedOn.ToConfigLocalTime()
+                @Model.PostedOn
             </div>
 
         </div>
