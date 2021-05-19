@@ -40,33 +40,33 @@ namespace Blog
         //******************Реализация методов интерфейса для извлечения записей на основе категории**********************
         public IList<Post> PostsForCategory(string categorySlug, int pageNo, int pageSize)
         {
-            var posts = _session.Query<Post>()
+            var posts = _blogContext.Posts
                                   .Where(p => p.Published && p.Category.UrlSlug.Equals(categorySlug))
                                   .OrderByDescending(p => p.PostedOn)
                                   .Skip(pageNo * pageSize)
                                   .Take(pageSize)
-                                  .Fetch(p => p.Category)
+                                  .Include(p => p.Category)
                                   .ToList();
 
             var postIds = posts.Select(p => p.Id).ToList();
 
-            return _session.Query<Post>()
+            return _blogContext.Posts
                   .Where(p => postIds.Contains(p.Id))
                   .OrderByDescending(p => p.PostedOn)
-                  .FetchMany(p => p.Tags)
+                  .Include(p => p.Tags)
                   .ToList();
         }
 
         public int TotalPostsForCategory(string categorySlug)
         {
-            return _session.Query<Post>()
+            return _blogContext.Posts
                           .Where(p => p.Published && p.Category.UrlSlug.Equals(categorySlug))
                           .Count();
         }
 
         public Category Category(string categorySlug)
         {
-            return _session.Query<Category>().FirstOrDefault(t => t.UrlSlug.Equals(categorySlug));
+            return _blogContext.Categories.FirstOrDefault(t => t.UrlSlug.Equals(categorySlug));
         }
         //******************************************************************************************************************
     }
