@@ -29,18 +29,17 @@ namespace Portfolio.Controllers
             return View("List", viewModel);
         }
 
-        public ViewResult Category(string category, int p)
+        public ViewResult Category(string category, int p = 1)
         {
             var viewModel = new ListViewModel(_blogRepository, category, p);
-            if(viewModel.Category == null)
+            if (viewModel.Category == null)
             {
                 throw new HttpExteption(404, "Category Not Found");
 
 
             }
 
-            ViewBag.Title = String.Format(@"Latest posts on category ""{0}""",
-                        viewModel.Category.Name);
+            ViewBag.Title = String.Format(@"Latest posts on category {0}", viewModel.Category.Name);
             return View("List", viewModel);
         }
     }
