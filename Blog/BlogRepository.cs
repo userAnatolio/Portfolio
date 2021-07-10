@@ -37,6 +37,11 @@ namespace Blog
             return _blogContext.Posts.Where(p => !checkIsPublished || p.Published == true).Count();
         }
 
+        public IList<Category>Categories()
+        {
+            return _blogContext.Categories.OrderBy(p => p.Name).ToList();
+        }
+
 
     }
 }
