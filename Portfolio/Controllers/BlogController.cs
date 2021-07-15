@@ -26,5 +26,11 @@ namespace Portfolio.Controllers
             ViewBag.Title = "Latest Posts";
             return View("List", viewModel);
         }
+
+        public PartialViewResult Sidebars()
+        {
+            var widgetViewModel = new WidgetViewModel(_blogRepository);
+            return PartialView("_Sidebars", widgetViewModel);
+        }
     }
 }

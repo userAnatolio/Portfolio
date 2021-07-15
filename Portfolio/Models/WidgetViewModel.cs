@@ -3,7 +3,7 @@ using Blog;
 using Blog.Objects;
 using System.Collections.Generic;
 
-namespace Models
+namespace Portfolio.Models
 {
     public class WidgetViewModel
     {
