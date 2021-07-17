@@ -1,0 +1,4 @@
+﻿1. Views\Blog\Post.cshtml - исправить ошибку foreach (var elem in Model.Tags)
+2. Blog\BlogRepository.cs - исправить запрос query.Include(p => p.Tags); Сделать как в исходном методе..
+3. Portfolio\Controllers\BlogController.cs - исправить исключение  throw new HttpExteption(...)
+4. 

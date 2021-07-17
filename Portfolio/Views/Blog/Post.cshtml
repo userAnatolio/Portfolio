@@ -1,0 +1,45 @@
+﻿@model Blog.Objects.Post
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div id="content">
+    <div class="post">
+        <div class="post-meta">
+
+            <div class="row">
+
+                <div class="post-title">
+                    <h1>@Model.Title</h1>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="post-category col-md-4">
+                    <span>Category: </span>@Model.Category.Name
+                </div>
+
+                <div class="post-tags col-md-4">
+                    <span>Tags:</span>
+                    @*@foreach (var elem in Model.Tags)
+                    {
+                        @elem.Name
+                    }*@
+
+                </div>
+
+                <div class="posted-date col-md-4">
+                    @Model.PostedOn
+                </div>
+
+            </div>
+        </div>
+
+        <div class="post-body">
+            @Html.Raw(Model.Description)
+        </div>
+
+    </div>
+</div>
