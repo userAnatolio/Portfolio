@@ -78,8 +78,10 @@
     <main>
         <div><a id="Down"></a><!--вверх страницы--></div>
         <div class="container wrap">
-
+            @Html.Partial("_Search");
             @RenderBody()
+            @Html.Action("Sidebars")
+            <partial name="_Categories" />
         </div>
         <div><a href="#Down" class="top">ВВЕРХ</a></div><!--Кнопка наверх-->
 
@@ -136,7 +138,7 @@
         }
         TextHide();
     </script>
-
+    <script src="@Url.Content("~/Scripts/app.js")"></script>
     <script src="/js/ajaxMenu.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
