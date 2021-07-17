@@ -38,7 +38,6 @@ namespace Portfolio.Models
                     break;
             }
             
-        }
 
         public IList<Post> Posts { get; private set; }
         public int TotalPosts { get; private set; }

@@ -139,7 +139,6 @@ namespace Blog
 
             return query.Single();
         }
-<<<<<<< HEAD
 
         public IList<Category>Categories()
         {
@@ -248,8 +247,19 @@ namespace Blog
 
             return query.Single();
         }
-=======
->>>>>>> PostBasedOnCategory
 
+
+        public int TotalPostsForCategory(string categorySlug)
+        {
+            return _blogContext.Posts
+                          .Where(p => p.Published && p.Category.UrlSlug.Equals(categorySlug))
+                          .Count();
+        }
+
+        public Category Category(string categorySlug)
+        {
+            return _blogContext.Categories.FirstOrDefault(t => t.UrlSlug.Equals(categorySlug));
+        }
+        //******************************************************************************************************************
     }
 }

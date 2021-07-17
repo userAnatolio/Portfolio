@@ -12,12 +12,9 @@ namespace Blog
         IList<Post> Posts(int pageNo, int pageSize);
         //TotalPosts используется для возврата общего кол-ва всех опубликованных сообщений
         int TotalPosts(bool checkIsPublished = true);
-<<<<<<< HEAD
 		
         //method Categories that returns all the categories from database
         IList<Category> Categories();
-
->>>>>>> PostBasedOnCategory
 
         //возвращает посты относящиеся к категории основанных на slug(UrlSlug)
         IList<Post> PostsForCategory(string categorySlug, int pageNo, int pageSize);

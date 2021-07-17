@@ -29,19 +29,12 @@ namespace Portfolio.Controllers
             return View("List", viewModel);
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
         public PartialViewResult Sidebars()
         {
             var widgetViewModel = new WidgetViewModel(_blogRepository);
             return PartialView("_Sidebars", widgetViewModel);
 		}
 
-=======
->>>>>>> PostBasedOnCategory
-=======
->>>>>>> PostBasedOnCategory
         public ViewResult Category(string category, int p = 1)
         {
             var viewModel = new ListViewModel(_blogRepository, category, "Category", p);
@@ -116,13 +109,7 @@ namespace Portfolio.Controllers
 
         protected HttpExteption(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> PostBasedOnCategory
-=======
->>>>>>> PostBasedOnCategory
         }
     }
 }
