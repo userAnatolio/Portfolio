@@ -17,7 +17,7 @@ namespace Portfolio.Models
 
         public ListViewModel(IBlogRepository blogRepository, string text, string type, int p)
         {
-            switch(type)
+            switch (type)
             {
                 case "Tag":
                     Posts = blogRepository.PostsForTag(text, p - 1, 10);
@@ -37,6 +37,7 @@ namespace Portfolio.Models
                     Search = text;
                     break;
             }
+        }
             
 
         public IList<Post> Posts { get; private set; }

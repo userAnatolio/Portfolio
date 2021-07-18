@@ -78,10 +78,12 @@
     <main>
         <div><a id="Down"></a><!--вверх страницы--></div>
         <div class="container wrap">
+            
             @Html.Partial("_Search");
+            @await Component.InvokeAsync("Widget", new { maxPriority = 2, isDone = false})
+            @*<partial name="_Sidebars" />*@
             @RenderBody()
-            @Html.Action("Sidebars")
-            <partial name="_Categories" />
+            @*@Html.Action("Sidebars")*@
         </div>
         <div><a href="#Down" class="top">ВВЕРХ</a></div><!--Кнопка наверх-->
 

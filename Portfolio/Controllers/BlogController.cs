@@ -29,10 +29,13 @@ namespace Portfolio.Controllers
             return View("List", viewModel);
         }
 
-        public PartialViewResult Sidebars()
+        public ActionResult Sidebars()
         {
             var widgetViewModel = new WidgetViewModel(_blogRepository);
-            return PartialView("_Sidebars", widgetViewModel);
+
+                ViewBag.Test = "huuuuuuuuuuuuuuuuuuuy";
+                return PartialView("_Sidebars", widgetViewModel);
+
 		}
 
         public ViewResult Category(string category, int p = 1)
