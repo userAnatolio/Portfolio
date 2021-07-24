@@ -10,12 +10,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Blog.Data;
 using Blog;
-using Blog.Migrations;
 using Portfolio.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Identity;
+using Portfolio.AccountModels;
 
 namespace Portfolio
 {
@@ -33,7 +33,7 @@ namespace Portfolio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<PortfolioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PortfolioContext>();
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<PortfolioContext>();
 
             services.AddRazorPages();
             services.AddControllersWithViews();

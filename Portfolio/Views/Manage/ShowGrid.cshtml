@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Manage Posts, Categories and Tags</title>
+
+    <!-- jquery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+
+    <!-- jquery ui library -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+
+    <link href="@Url.Content("~/css/JQueryUI.css")" rel="stylesheet" />
+
+    <!-- jqgrid -->
+    <link href="@Url.Content("~/JQuery/jqGrid/css/ui.jqgrid.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/JQuery/jqGrid/js/jquery.jqGrid.min.js")"></script>
+    <script src="@Url.Content("~/JQuery/jqGrid/js/i18n/grid.locale-en.js")"></script>
+
+    <!-- tinyMCE -->
+    <script src="@Url.Content("~/tinymce/tinymce.min.js")"></script>
+
+    <link href="@Url.Content("~/css/admin.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/js/admin.js")"></script>
+
+</head>
+<body>
+
+    <!-- logout link -->
+    <div style="text-align:right; margin-bottom:5px;">
+        @Html.ActionLink("logout", "Logout")
+    </div>
+
+    <h2>Manage Posts, Categories and Tags</h2>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tab-posts">Posts</a></li>
+            <li><a href="#tab-cats">Categories</a></li>
+            <li><a href="#tab-tags">Tags</a></li>
+        </ul>
+        <div id="tab-posts" class="tab">
+            <table id="tablePosts" class="grid">
+            </table>
+            <div id="pagerPosts" class="pager">
+            </div>
+        </div>
+        <div id="tab-cats" class="tab">
+            <table id="tableCats" class="grid">
+            </table>
+            <div id="pagerCats" class="pager">
+            </div>
+        </div>
+        <div id="tab-tags" class="tab">
+            <table id="tableTags" class="grid">
+            </table>
+            <div id="pagerTags" class="pager">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

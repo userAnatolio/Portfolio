@@ -37,6 +37,8 @@ namespace Blog
 
         //Возвращает пост основанный на трех параметрах(год, месяц, titleSlug)
         Post Post(int year, int month, string titleSlug);
+
+        IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending);
     }
 
    

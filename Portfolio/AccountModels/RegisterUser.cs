@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Portfolio.Models
+namespace Portfolio.AccountModels
 {
     public class RegisterUser
     {

@@ -8,8 +8,6 @@ namespace Blog.Data
 {
     public class BlogContext : DbContext
     {
-        
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }

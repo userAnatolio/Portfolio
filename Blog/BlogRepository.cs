@@ -6,7 +6,7 @@ using System.Text;
 using Blog.Objects;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
-using EntityFramework.Extensions;
+
 
 namespace Blog
 {
@@ -147,6 +147,211 @@ namespace Blog
         }
         //*******************************************************************************************************************
 
+        public IList<Post>Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending)
+        {
+            IList<Post> posts;
+            IList<int> postIds;
+            switch(sortColumn)
+            {
+                case "Title":
+                    if(sortByAscending)
+                    {
+                        posts = _blogContext.Posts
+                        .OrderBy(p => p.Title)
+                        .Skip(pageNo * pageSize)
+                        .Take(pageSize)
+                        .Include(p => p.Category)
+                        .ToList();
 
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                          .Where(p => postIds.Contains(p.Id))
+                          .OrderBy(p => p.Title)
+                          .Include(p => p.Tags)//FetchMany???
+                          .ToList();
+                    }
+                    else
+                    {
+                        posts = _blogContext.Posts
+                        .OrderByDescending(p => p.Title)
+                        .Skip(pageNo * pageSize)
+                        .Take(pageSize)
+                        .Include(p => p.Category)
+                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderByDescending(p => p.Title)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+
+                    break;
+                case "Published":
+                    if (sortByAscending)
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderBy(p => p.Published)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderBy(p => p.Published)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    else
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderByDescending(p => p.Published)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderByDescending(p => p.Published)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    break;
+                case "PostedOn":
+                    if (sortByAscending)
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderBy(p => p.PostedOn)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderBy(p => p.PostedOn)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    else
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderByDescending(p => p.PostedOn)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                        .Where(p => postIds.Contains(p.Id))
+                                        .OrderByDescending(p => p.PostedOn)
+                                        .Include(p => p.Tags)
+                                        .ToList();
+                    }
+                    break;
+                case "Modified":
+                    if (sortByAscending)
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderBy(p => p.Modified)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderBy(p => p.Modified)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    else
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderByDescending(p => p.Modified)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderByDescending(p => p.Modified)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    break;
+                case "Category":
+                    if (sortByAscending)
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderBy(p => p.Category.Name)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderBy(p => p.Category.Name)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    else
+                    {
+                        posts = _blogContext.Posts
+                                        .OrderByDescending(p => p.Category.Name)
+                                        .Skip(pageNo * pageSize)
+                                        .Take(pageSize)
+                                        .Include(p => p.Category)
+                                        .ToList();
+
+                        postIds = posts.Select(p => p.Id).ToList();
+
+                        posts = _blogContext.Posts
+                                          .Where(p => postIds.Contains(p.Id))
+                                          .OrderByDescending(p => p.Category.Name)
+                                          .Include(p => p.Tags)
+                                          .ToList();
+                    }
+                    break;
+                default:
+                    posts = _blogContext.Posts.OrderByDescending(p => p.PostedOn)
+                                    .Skip(pageNo * pageSize)
+                                    .Take(pageSize)
+                                    .Include(p => p.Category)
+                                    .ToList();
+
+                    postIds = posts.Select(p => p.Id).ToList();
+
+                    posts = _blogContext.Posts.Where(p => postIds.Contains(p.Id))
+                                      .OrderByDescending(p => p.PostedOn)
+                                      .Include(p => p.Tags)
+                                      .ToList();
+                    break;
+            }
+
+            return posts;
+        }
+        //*******************************************************************************************************************
     }
 }

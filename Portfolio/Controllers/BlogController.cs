@@ -8,9 +8,11 @@ using Blog.Objects;
 using Portfolio.Models;
 using System.Web;
 using System.Runtime.Serialization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Portfolio.Controllers
 {
+    
     public class BlogController : Controller
     {
         private readonly IBlogRepository _blogRepository;
@@ -69,6 +71,7 @@ namespace Portfolio.Controllers
             return View("List", viewModel);
         }
 
+        [Authorize(Roles = "user")]
         public ViewResult Post(int year, int month, string title)
         {
             var post = _blogRepository.Post(year, month, title);

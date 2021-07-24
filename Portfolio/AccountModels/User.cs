@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Portfolio.Models
+namespace Portfolio.AccountModels
 {
     public class User : IdentityUser
     {

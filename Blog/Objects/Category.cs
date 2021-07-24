@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Blog.Objects
 {
@@ -18,6 +19,7 @@ namespace Blog.Objects
         public virtual string Description
         { get; set; }
 
+        [JsonIgnore]
         public virtual IList<Post> Posts
         { get; set; }
     }
